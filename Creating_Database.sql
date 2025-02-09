@@ -1,3 +1,5 @@
+CREATE DATABASE Grocery_Store;
+
 USE Grocery_Store;
 
 -- Create Countries first
@@ -22,7 +24,7 @@ CREATE TABLE categories (
     CategoryName VARCHAR(45)
 );
 
--- Customers table
+
 CREATE TABLE customers (
     CustomerID INT PRIMARY KEY,
     FirstName VARCHAR(45),
@@ -37,7 +39,7 @@ CREATE TABLE employees (
     MiddleInitial VARCHAR(1),
     LastName VARCHAR(45),
     BirthDate DATE,
-    Gender CHAR(1), -- Changed from VARCHAR(10) to CHAR(1)
+    Gender CHAR(1),
     CityID INT,
     HireDate DATE,
     FOREIGN KEY (CityID) REFERENCES cities(CityID)
@@ -47,13 +49,13 @@ CREATE TABLE employees (
 CREATE TABLE products (
     ProductID INT PRIMARY KEY,
     ProductName VARCHAR(45),
-    Price DECIMAL(10,2), -- Changed from DECIMAL(4,0)
+    Price DECIMAL(10,2),
     CategoryID INT,
     Class VARCHAR(15),
-    ModifyDate DATETIME, -- Changed from DATE to DATETIME
+    ModifyDate DATETIME, 
     Resistant VARCHAR(15),
     IsAllergic VARCHAR(45),
-    VitalityDays INT, -- Changed from DECIMAL(3,0) to INT
+    VitalityDays INT,
     FOREIGN KEY (CategoryID) REFERENCES categories(CategoryID)
 );
 
@@ -67,7 +69,7 @@ CREATE TABLE sales (
     Discount DECIMAL(10,2),
     TotalPrice DECIMAL(10,2),
     SalesDate DATETIME,
-    TransactionNumber VARCHAR(25), -- Fixed spelling error
+    TransactionNumber VARCHAR(25),
     FOREIGN KEY (SalesPersonID) REFERENCES employees(EmployeeID),
     FOREIGN KEY (CustomerID) REFERENCES customers(CustomerID),
     FOREIGN KEY (ProductID) REFERENCES products(ProductID)
